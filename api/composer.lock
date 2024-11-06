@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32f79b3f32c110edf1f0daa01e5f1d30",
+    "content-hash": "0ba609c25d20029f4a3161ed4e6a26f2",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2394,6 +2394,84 @@
                 "source": "https://github.com/fleetbase/core-api/tree/v1.5.16"
             },
             "time": "2024-10-17T11:34:20+00:00"
+        },
+        {
+            "name": "fleetbase/customer-portal-api",
+            "version": "0.0.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://s3.ap-southeast-1.amazonaws.com/fleetbase-registry-production/flb/%40fleetbase/customer-portal-engine/customer-portal-engine-0.0.3.tgz?AWSAccessKeyId=ASIA26E6KG6WNEE7RHQJ&Expires=1730868119&Signature=CEpawdaGp%2FL78R6YmVahFhTmlKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEJ3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkYwRAIgGHg3F66SficZMvbK1UVJtCD8xem9So0nJ9IE3mUvAkoCIFsfXCm7KC3xI0SlWzK2pd0B5nb%2FRUwuYllDtL65ygUvKpYECCYQABoMNzUxOTUxMjk2NDI4IgzAyWJD6rugsStaR%2Bgq8wMSUfJM5In5vo3hyeBbC%2FYXe5v8On4aO4CAJRt2jqG7kCVB4ZOKN79Q7TqQe77WMVjJXLTLavWvCS49B2iPkqq7tko0HF7u8TRKXOyXEW7Pc4OdxYF0lGWHg13h6t4UtUeqknWMQiqG5AY5IA%2FbmpDLTFOdrgSIkXaq1Xjl9cnv1s0RFZa145FjH3Dg8d6DcMk3YNWpADGjCKD6%2F02TN7L7pCZKAoKQAhewA1PquyxtQPqc2PhLbNh0bm5mQTX33Wb6lUs72NqSyRoNYD%2FZVP9trrBhOpqn4Z%2BiJ%2BYExNwQpNh%2FU4fbnoCs9k6GCHhf6%2F8r3QL4BgKS2vwbJktopdTBfAKBKbI7x4pbn4xiHhbUP%2FrFs4DCh7KhkVyf443KcgDwsxcN9HKMLBPSXSmfTS48D5iAldn1v3eO7nJRbsy6vYGRCOaMb6sOznHGnQ%2BR0JPWz%2F2IKJl4YfLEqwbcmwkp3RmW3uvvnOnPGIWeHWHQ7m5ya1wc37JW84s1dIZ2B7Jzfwdv3YcFOayTduxndfIBxcg5TKUK48%2FID8nx4ZWKIPq2ziF0viT5MAlH%2B1%2FlO0IXACk5x%2BrRErJl8ZwrH43yFTqwxuc5QyNsQoJs4%2B4rP4hrTQP%2BZOwEyorzcAW5TGIg9MQB0yHf4cfFkMvw1dL4GkyPMP3fq7kGOqcBa%2B1MFHzbrrMQGMc%2F42%2BLO3%2FMBAVlYarg0JCyshR7ZySpv6n8khBbJeHGfMBBjF3Bsvk8iMIbZBspYG6vZh8mP47LYqxwsqOuI9%2Ffa9h937330ZHBhb0ih2jxhKmzuBUrSvklDQUo7VJz44Y7ISt%2BJL5EYsGtHeoDXutiepaGbeiAxeBtl0nIyeyjWTAR06na7aQFYClinoWPIaItplVXAI1ocgvigZk%3D"
+            },
+            "require": {
+                "fleetbase/core-api": "*",
+                "php": "^8.0",
+                "php-http/guzzle7-adapter": "^1.0",
+                "psr/http-factory-implementation": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.34.1",
+                "nunomaduro/collision": "^5.11.0|^6.4.0",
+                "pestphp/pest": "^1.22.6",
+                "phpstan/phpstan": "^1.10.38",
+                "symfony/var-dumper": "^5.4.29"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fleetbase\\CustomerPortal\\Providers\\CustomerPortalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fleetbase\\CustomerPortal\\": "server/src/",
+                    "Fleetbase\\CustomerPortal\\Seeds\\": "server/seeds/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Fleetbase\\CustomerPortal\\Tests\\": "server/tests/"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "php-cs-fixer fix -v"
+                ],
+                "test:lint": [
+                    "php-cs-fixer fix -v --dry-run"
+                ],
+                "test:types": [
+                    "phpstan analyse --ansi --memory-limit=0"
+                ],
+                "test:unit": [
+                    "pest --colors=always"
+                ],
+                "test": [
+                    "@test:lint",
+                    "@test:types",
+                    "@test:unit"
+                ]
+            },
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fleetbase Pte Ltd.",
+                    "email": "hello@fleetbase.io"
+                }
+            ],
+            "description": "Extendable Customer Portal for Fleetbase",
+            "keywords": [
+                "customer",
+                "customer management",
+                "customer portal",
+                "customer support",
+                "customer tracking",
+                "fleetbase",
+                "fleetbase-extension"
+            ]
         },
         {
             "name": "fleetbase/fleetops-api",
